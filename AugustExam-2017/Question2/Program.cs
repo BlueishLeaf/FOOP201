@@ -21,9 +21,6 @@ namespace AugustQ2
             ConvertInt(lineCount, playerAges, playerStrings);
             GetCounts(lineCount, playerAges, ageTotals, playerStrings, genderCounts);
             WriteReport(ageTotals, genderCounts);
-            Console.WriteLine();
-            Console.Write("Press any key to continue...");
-            Console.ReadKey();
         }
 
         private static void ReadFile(string[,] playerStrings)
