@@ -1,7 +1,8 @@
 # FOOP201
-* Foundation in Object Oriented Programming Semester 1 *
+*Foundation in Object Oriented Programming Semester 1*
 
-** List of Exercises **
+**List of Exercises**
+
 * August 2016 Repeat Exam
 * Assignment 1 - Example
 * Assignment 1
