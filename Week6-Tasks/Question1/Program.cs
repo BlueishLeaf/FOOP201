@@ -8,36 +8,37 @@ namespace Week6
 {
     class Bill
     {
-        public string companyName { get; set; }
-        public int amountOwed { get; set; }
+        public string CompanyName { get; set; }
+        public int AmountOwed { get; set; }
 
-        public Bill(string companyName, int amountOwed)
-        {
-            this.companyName = companyName;
-            this.amountOwed = amountOwed;
-            Console.WriteLine(ToString());
-            Console.WriteLine(companyName);
-            Console.WriteLine(amountOwed);
-        }
         public override string ToString()
         {
-            string type = GetType().ToString();
-            return type;
+            return String.Format("{0,-15}{1,-15}{2,-15}",GetType().ToString(),CompanyName,AmountOwed);
         }
 
     }
 
     class OverdueBill : Bill
     {
-        public int daysOverdue { get; set; }
+        public int DaysOverdue { get; set; }
+
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            Bill bill1 = new Bill("Mary",50000);
+            Bill bill1 = new Bill();
             OverdueBill lateBill1 = new OverdueBill();
+
+            bill1.CompanyName = "Corp1";
+            bill1.AmountOwed = 20500;
+            lateBill1.CompanyName = "Corp2";
+            lateBill1.AmountOwed = 39500;
+            lateBill1.DaysOverdue = 50;
+
+            Console.WriteLine(bill1.ToString());
+
         }
     }
 }
