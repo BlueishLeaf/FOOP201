@@ -51,5 +51,10 @@ namespace Week8pt3
             }
             letterBox.Text = letterGrade.ToString();
         }
+
+        private void exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

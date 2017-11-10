@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Week8
+namespace Question2
 {
     class Book : Object
     {
@@ -12,16 +12,10 @@ namespace Week8
         public string Title { get; set; }
         public string Author { get; set; }
         public virtual double Price { get; set; }
-        public Book(int isbn, string title, string author, double price) 
+
+        public override string ToString()
         {
-            ISBN = isbn;
-            Title = title;
-            Author = author;
-            Price = price;
-        }
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
+            return String.Format("{0,-15}{1,-15}{2,-15}{3,-15}", ISBN, Title, Author, Price);
         }
         public override bool Equals(object obj)
         {
@@ -35,54 +29,90 @@ namespace Week8
                 return false;
             }
         }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 
     class TextBook : Book
     {
-        public string Grade { get; set; }
-        public override double Price {
+        public char GradeLevel { get; set; }
+        public override double Price
+        {
             get { return base.Price; }
+
             set
             {
-                if (value >= 20.00 && value <= 80.00)
+                if (value >= 20 && value <= 80)
                 {
-                    Price=value;
+                    base.Price = value;
                 }
+                else
+                {
+                    base.Price = 0;
+                }
+
             }
+
+        }
+        public override string ToString()
+        {
+            return String.Format("{0,-15}{1,-15}{2,-15}{3,-15}{4,-15}", ISBN, Title, Author, Price, GradeLevel);
         }
 
-        public TextBook(string grade) : base(1234, "testbook", "testtitle", 40)
-        {
-            Grade = grade;
-        }
     }
 
     class CoffeeTableBook : Book
     {
+        private double price;
         public override double Price
         {
             get { return base.Price; }
+
             set
             {
-                if (value >= 35.00 && value <= 100.00)
+                if (value >= 35 && value <= 100)
                 {
-                    Price = value;
+                    base.Price = value;
+                }
+                else
+                {
+                    base.Price = 0;
                 }
             }
         }
-        public CoffeeTableBook() : base(1234, "testbook", "testtitle", 50)
-        {
-        }
-
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            Book txt1 = new Book(1234,"test1","testa",100);
-            Book txt2 = new Book(1235, "test2", "testb", 200);
-            Console.WriteLine(txt1.Equals(txt2));
+            Book b1 = new Book();
+            TextBook b2 = new TextBook();
+            CoffeeTableBook b3 = new CoffeeTableBook();
+
+            b1.ISBN = 1234;
+            b1.Title = "test1";
+            b1.Author = "testa";
+            b1.Price = 90.45;
+
+            b2.ISBN = 1234;
+            b2.Title = "test2";
+            b2.Author = "testb";
+            b2.Price = 40.45;
+            b2.GradeLevel = 'A';
+
+            b3.ISBN = 4321;
+            b3.Title = "test3";
+            b3.Author = "testc";
+            b3.Price = 90;
+
+            Console.WriteLine(b1.ToString());
+            Console.WriteLine(b2.ToString());
+            Console.WriteLine(b3.ToString());
+
+            Console.WriteLine(b1.Equals(b2));
 
         }
     }

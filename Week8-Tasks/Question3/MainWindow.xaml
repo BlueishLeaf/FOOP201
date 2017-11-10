@@ -5,14 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Week8pt3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Label Name="num" Content="Number grade" HorizontalAlignment="Left" Margin="80,81,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.979,0.449"/>
-        <Label Name="letter" Content="Letter grade" HorizontalAlignment="Left" Margin="80,150,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.979,0.449"/>
-        <TextBox x:Name="numTxt" HorizontalAlignment="Left" Height="23" Margin="209,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="submit" Content="Calculate" HorizontalAlignment="Left" Margin="127,238,0,0" VerticalAlignment="Top" Width="75" Click="submit_Click"/>
-        <Button x:Name="exit" Content="Exit" HorizontalAlignment="Left" Margin="254,238,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBlock x:Name="letterBox" HorizontalAlignment="Left" Margin="209,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        WindowStartupLocation="CenterScreen"
+        Title="Calculate Letter Grade" Height="363.726" Width="662.256">
+
+    <Grid Margin="0,0,504,185">
+        <Label Name="num" TabIndex="0" Content="Number grade"  Margin="10,10,0,0"  RenderTransformOrigin="-3.979,0.449" HorizontalAlignment="Left" Width="90" Height="26" VerticalAlignment="Top"/>
+        <Label Name="letter" Content="Letter grade" Margin="10,41,0,0"  RenderTransformOrigin="-3.979,0.449" HorizontalAlignment="Left" Width="90" Height="26" VerticalAlignment="Top"/>
+        <TextBox x:Name="numTxt"   Height="23" Margin="105,13,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" VerticalAlignment="Top"/>
+        <Button x:Name="submit"  Content="Calculate" HorizontalAlignment="Left" Margin="44,72,0,0" VerticalAlignment="Top" Width="75" Click="submit_Click"/>
+        <Button x:Name="exit" Content="Exit" HorizontalAlignment="Left" Margin="44,97,0,0" VerticalAlignment="Top" Width="75" Click="exit_Click"/>
+        <TextBlock x:Name="letterBox" HorizontalAlignment="Left" Margin="105,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" Height="23"/>
 
     </Grid>
 </Window>
