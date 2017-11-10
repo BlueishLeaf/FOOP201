@@ -10,4 +10,4 @@
 * Week 4 - Objects and Classes pt 2
 * Week 5 - Team Exercise
 * Week 6 - Inheritance pt 1
-* Week 8 - Inheritance pt 2
+* Week 8 - Inheritance pt 2/WPF Intro
