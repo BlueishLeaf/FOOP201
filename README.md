@@ -1,7 +1,7 @@
 # FOOP201
 *Foundation in Object Oriented Programming Semester 1*
 
-### List of Exercises ###
+### List of Exercises/Assignments ###
 * August 2016 Repeat Exam
 * Assignment 1 - Carpet Price Calculator/Club Member Information
 * Assignment 1 Example - Taxi Fare Calculator/Employee Information
