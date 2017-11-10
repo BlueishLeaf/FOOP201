@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1413F357-FEBB-4F9D-9022-FEEBF5A887EA}</ProjectGuid>
+    <ProjectGuid>{7E82CE5A-846B-4F11-B545-DE0F161DE5F9}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FOOPAssignment</RootNamespace>
-    <AssemblyName>FOOPAssignment</AssemblyName>
+    <RootNamespace>FOOPAssignment02</RootNamespace>
+    <AssemblyName>FOOPAssignment02</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

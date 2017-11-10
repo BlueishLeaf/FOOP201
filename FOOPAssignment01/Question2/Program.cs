@@ -4,82 +4,84 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FOOPAssignment02
+namespace FOOPAssignmentPt2
 {
-    class Employee : IComparable
+    class MemberTest
     {
-        public static int employeeCount;
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int EmployeeId { get; set; }
-        private double salary;
-        private double holidaysLeft = 30;
-        private int numHolidays = 0;
-        public double Salary
+        //Calls ToString method in Member class for each object in the
+        //member array, outputs all their details
+        public void PrintDetails(Member[] memberArray)
         {
-            get
+            Console.WriteLine("{0,-15}{1,-15}{2,-15}{3,-15}{4,-15}{5,-15}","First Name","Last Name","Age","Member ID","Membership","Price");
+            for (int i=0;i<memberArray.Length;i++)
             {
-                return salary;
+                Console.WriteLine(memberArray[i].ToString());
             }
         }
-        public string Department { get; set; }
-
-        private Holiday[] HolidayList = new Holiday[10];
-
-        public Employee(string firstName, string lastName, int employeeId, double salary, string department)
-        {
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.EmployeeId = employeeId;
-            this.salary = salary;
-            this.Department = department;
-            employeeCount++;
-
-        }
-
-        public override string ToString()
-        {
-            return String.Format("{0,-15}{1,-15}{2,10}{3,10}{4,15}",FirstName,LastName,EmployeeId,Salary,Department);
-        }
-
-        public void PayRise(double payIncrease)
-        {
-            salary = Salary * payIncrease;
-        }
-
-        public int CompareTo(object obj)
-        {
-            Employee tempEmployee = (Employee)obj;
-            int returnVal= this.LastName.CompareTo(tempEmployee.LastName);
-            return returnVal;
-        }
-
-        public void AddHoliday(DateTime startDate, DateTime endDate)
-        {
-            HolidayList[numHolidays] = new Holiday(startDate,endDate);
-            this.holidaysLeft -= HolidayList[numHolidays].GetDays();
-            Console.WriteLine("You have "+holidaysLeft + " holidays remaining.");
-            numHolidays++;
-        }
-
     }
 
-    class Holiday
+    class Member : IComparable
     {
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public static int numMembers = 0;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
+        public int MemberID { get; set; }
+        public string MembershipStatus { get; set; }
+        public double Price { get; }
 
-        public Holiday(DateTime startDate, DateTime endDate)
+        public Member(string firstName, string lastName, int age, int memberId)
         {
-            this.StartDate = startDate;
-            this.EndDate = endDate;
+            FirstName = firstName;
+            LastName = lastName;
+            Age = age;
+            MemberID = memberId;
+            MembershipStatus = "Expired";
+            Price = SetPrice();
+            numMembers++;
         }
 
-        public double GetDays()
+        //Overrides ToString() method and instead returns a formatted string of member details
+        public override string ToString()
         {
-            return (EndDate - StartDate).TotalDays;
+            return String.Format("{0,-15}{1,-15}{2,-15}{3,-15}{4,-15}{5,-15}",FirstName,LastName,Age,MemberID,MembershipStatus,Price);
         }
 
+        //Inverts the membership status of the member this method is called on
+        public void ChangeStatus()
+        {
+            if (MembershipStatus=="Expired")
+            {
+                MembershipStatus = "Current";
+            }
+            else if (MembershipStatus=="Current")
+            {
+                MembershipStatus = "Expired";
+            }
+        }
+
+        //Sets the price of the readonly property "Price" depending on member age
+        private double SetPrice()
+        {
+            if (Age < 18)
+            {
+                return 50;
+            }
+            else if (Age>=18)
+            {
+                return 150;
+            }
+            return 0;
+
+        }
+
+        //Compares each member's last name, for sorting purposes
+        public int CompareTo(object obj)
+        {
+            Member tempMember = (Member)obj;
+            int returnVal = this.LastName.CompareTo(tempMember.LastName);
+            return returnVal;
+        }
 
     }
 
@@ -87,34 +89,40 @@ namespace FOOPAssignment02
     {
         static void Main(string[] args)
         {
-            Employee[] empArray = new Employee[4];
-            empArray[0] = new Employee("John","Smith", 1234, 50000, "Accounting");
-            empArray[1] = new Employee("John", "Carmac", 4321, 70000, "IT");
-            empArray[2] = new Employee("John", "Romero", 6969, 100000, "IT");
-            empArray[3] = new Employee("John", "Johnston", 8033, 20000, "Janitorial");
-            for (int i=0;i<empArray.Length;i++)
-            {
-                Console.WriteLine(empArray[i].ToString());
-            }
+            //Array of members is declared
+            Member[] memberArray = new Member[5];
+            memberArray[0] = new Member("Killian","Kelly",17,1234);
+            memberArray[1] = new Member("John", "Carmac", 47, 1235);
+            memberArray[2] = new Member("John", "Romero", 43, 1236);
+            memberArray[3] = new Member("Dara", "MacConville", 17, 1237);
+            memberArray[4] = new Member("Ryan", "Letourneu", 28, 1238);
+
+            //Prints out details of members as they are in the beginning
+            Console.WriteLine("====CLUB MEMBERSHIP DETAILS====");
+            Console.WriteLine("====Member Details====");
+            MemberTest newTest = new MemberTest();
+            newTest.PrintDetails(memberArray);
             Console.WriteLine();
-            Console.WriteLine("Number of employees = "+Employee.employeeCount);
-            for (int i = 0; i < empArray.Length; i++)
-            {
-                Console.WriteLine(empArray[i].ToString());
-            }
+
+            //Change status of 1st and 3rd member in array, then prints out the details again
+            memberArray[0].ChangeStatus();
+            memberArray[2].ChangeStatus();
+            Console.WriteLine("====Member Details With Status Changed On 1 & 3====");
+            newTest.PrintDetails(memberArray);
             Console.WriteLine();
-            Array.Sort(empArray);
-            for (int i = 0; i < empArray.Length; i++)
-            {
-                Console.WriteLine(empArray[i].ToString());
-            }
-            Console.Write("Enter index of employee to add holiday to: ");
-            int empIndex = int.Parse(Console.ReadLine());
-            Console.Write("Enter the start date of your holiday: ");
-            DateTime startDate = Convert.ToDateTime(Console.ReadLine());
-            Console.Write("Enter the end date of your holiday: ");
-            DateTime endDate = Convert.ToDateTime(Console.ReadLine());
-            empArray[empIndex].AddHoliday(startDate, endDate);
+
+            //Accesses the static variable in the member class that keeps track of the number
+            //of instances of that class and prints it out
+            Console.WriteLine("Number of members: "+Member.numMembers);
+            Console.WriteLine();
+
+            //Sorts array alphabetically by surname using IComparable, REVERSES it, then prints out the sorted members in reverse alphabetical order
+            Array.Sort(memberArray);
+            Array.Reverse(memberArray);
+            Console.WriteLine("====Member Details After Sorting By Surname====");
+            newTest.PrintDetails(memberArray);
+
+
         }
     }
 }
