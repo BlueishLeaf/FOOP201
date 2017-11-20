@@ -20,9 +20,35 @@ namespace Question1
     /// </summary>
     public partial class MainWindow : Window
     {
+        int scoreCount=0;
+        int scoreTotal=0;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Clear(object sender, RoutedEventArgs e)
+        {
+            scoreCount = 0;
+            scoreTotal = 0;
+            scoreTotalBlock.Text = null;
+            scoreCountBlock.Text = null;
+            scoreAverageBlock.Text = null;
+        }
+
+        private void Button_Add(object sender, RoutedEventArgs e)
+        {
+            scoreTotal += int.Parse(scoreBox.Text);
+            scoreCount++;
+            scoreTotalBlock.Text = scoreTotal.ToString();
+            scoreCountBlock.Text = scoreCount.ToString();
+            scoreAverageBlock.Text = (scoreTotal / scoreCount).ToString();
+        }
+
+        private void Button_Exit(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

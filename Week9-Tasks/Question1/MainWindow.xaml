@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Label x:Name="scoreLabel" Content="Score:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="77"/>
+        <Label x:Name="scoreTotalLabel" Content="Score Total:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="77"/>
+        <Label x:Name="scoreCountLabel" Content="Score Count:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="77"/>
+        <Label x:Name="averageLabel" Content="Average:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="77"/>
+        <TextBlock x:Name="scoreTotalBlock" HorizontalAlignment="Left" Margin="96,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="scoreCountBlock" HorizontalAlignment="Left" Margin="96,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="scoreAverageBlock" HorizontalAlignment="Left" Margin="96,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button Content="Clear Scores" HorizontalAlignment="Left" Margin="163,41,0,0" VerticalAlignment="Top" Width="75" Click="Button_Clear"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="163,16,0,0" VerticalAlignment="Top" Width="75" Click="Button_Add"/>
+        <Button Content="Exit" HorizontalAlignment="Left" Margin="163,66,0,0" VerticalAlignment="Top" Width="75" Click="Button_Exit"/>
+        <TextBox x:Name="scoreBox" HorizontalAlignment="Left" Height="20" Margin="92,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53"/>
+
     </Grid>
 </Window>
