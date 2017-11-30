@@ -9,12 +9,19 @@
     <Grid>
         <ListBox x:Name="prodBox" HorizontalAlignment="Left" Height="231" Margin="10,74,0,0" VerticalAlignment="Top" Width="227" SelectionChanged="ListBox_SelectionChanged"/>
         <ListBox x:Name="cartBox" HorizontalAlignment="Left" Height="231" Margin="377,74,0,0" VerticalAlignment="Top" Width="250" SelectionChanged="ListBox_SelectionChanged_1"/>
-        <Label Content="Products" HorizontalAlignment="Left" Margin="86,48,0,0" VerticalAlignment="Top"/>
-        <Label Content="Cart" HorizontalAlignment="Left" Margin="491,43,0,0" VerticalAlignment="Top"/>
+        <Label Content="Products" HorizontalAlignment="Left" Margin="81,25,0,0" VerticalAlignment="Top"/>
+        <Label Content="Cart" HorizontalAlignment="Left" Margin="491,25,0,0" VerticalAlignment="Top"/>
         <Button x:Name="addToCartButton" Content="Add To Cart" HorizontalAlignment="Left" Margin="264,92,0,0" VerticalAlignment="Top" Width="83" Click="addToCartButton_Click"/>
         <Button x:Name="removeFromCartButton" Content="Remove From Cart" HorizontalAlignment="Left" Margin="252,147,0,0" VerticalAlignment="Top" Width="107" Height="22" Click="removeFromCartButton_Click"/>
         <Button x:Name="addTaxButton" Content="Add Tax" HorizontalAlignment="Left" Margin="27,333,0,0" VerticalAlignment="Top" Width="62" Click="addTaxButton_Click"/>
         <Button x:Name="exitButton" Content="Exit" HorizontalAlignment="Left" Margin="146,333,0,0" VerticalAlignment="Top" Width="53" Click="exitButton_Click"/>
+        <Label Content="Bike type" HorizontalAlignment="Left" Margin="38,51,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="bikeCombo" HorizontalAlignment="Left" Margin="102,51,0,0" VerticalAlignment="Top" Width="97" Height="18" SelectionChanged="bikeCombo_SelectionChanged"/>
+        <Label Content="Total Cost" HorizontalAlignment="Left" Margin="442,333,0,0" VerticalAlignment="Top"/>
+        <Label Content="Shipping Date" HorizontalAlignment="Left" Margin="442,364,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="costBlock" HorizontalAlignment="Left" Margin="553,337,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" RenderTransformOrigin="0.778,1.037"/>
+        <TextBlock x:Name="dateBlock" HorizontalAlignment="Left" Margin="553,374,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" RenderTransformOrigin="0.778,1.037"/>
+        <Button x:Name="calcShippingButton" Content="Calc Shipping Date" HorizontalAlignment="Left" Margin="491,395,0,0" VerticalAlignment="Top" Width="75" Click="calcShippingButton_Click"/>
 
     </Grid>
 </Window>

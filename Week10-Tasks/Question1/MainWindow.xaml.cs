@@ -20,20 +20,29 @@ namespace Question4
     /// </summary>
     public partial class MainWindow : Window
     {
-        Product[] prodArray = new Product[3];
-        Product[] cartArray = new Product[3];
-        int x = 0;
+        Product[] prodArray = new Product[6];
+        Product[] cartArray = new Product[6];
+        Product[] filteredArray = new Product[6];
+        Variation type1 = new Variation { VariationType = "Male" };
+        Variation type2 = new Variation { VariationType = "Female" };
 
 
         public MainWindow()
         {
             InitializeComponent();
-            Product productA = new Product { ID = 100, Name = "Hitachi Magic Wand", Price = 69.69 };
-            Product productB = new Product { ID = 101, Name = "Bad Dragon XXL Dildo", Price = 55.60 };
-            Product productC = new Product { ID = 102, Name = "Grown Ups 2 Blu-Ray", Price = 3.50 };
+
+            Product productA = new Product { ID = 100, Name = "Road Bike", Price = 69.69, varType=type1 };
+            Product productB = new Product { ID = 101, Name = "Mountain Bike", Price = 55.60,varType=type1 };
+            Product productC = new Product { ID = 102, Name = "Hybrid Bike", Price = 3.50, varType = type1 };
+            Product productD = new Product { ID = 103, Name = "Road Bike", Price = 69.69, varType = type2 };
+            Product productE = new Product { ID = 104, Name = "Mountain Bike", Price = 55.60, varType = type2 };
+            Product productF = new Product { ID = 105, Name = "Hybrid Bike", Price = 3.50, varType = type2 };
             prodArray[0] = productA;
             prodArray[1] = productB;
             prodArray[2] = productC;
+            prodArray[3] = productD;
+            prodArray[4] = productE;
+            prodArray[5] = productF;
 
 
         }
@@ -69,7 +78,6 @@ namespace Question4
                 cartArray[Array.IndexOf(cartArray, selectedProduct)] = null;
                 cartBox.ItemsSource = "";
                 cartBox.ItemsSource = cartArray;
-                x++;
                 prodBox.ItemsSource = prodArray;
             }
         }
@@ -84,7 +92,6 @@ namespace Question4
                 prodArray[Array.IndexOf(prodArray,selectedProduct)]= null;
                 prodBox.ItemsSource = "";
                 prodBox.ItemsSource = prodArray;
-                x++;
                 cartBox.ItemsSource = cartArray;
             }
         }
@@ -97,6 +104,49 @@ namespace Question4
         private void OnWindowLoaded(object sender, RoutedEventArgs e)
         {
             prodBox.ItemsSource = prodArray;
+            string[] bikeTypes = { "All", "Male", "Female" };
+            bikeCombo.ItemsSource = bikeTypes;
+            bikeCombo.SelectedIndex = 0;
+            
+        }
+
+        private void bikeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (bikeCombo.SelectedIndex==0)
+            {
+                prodBox.ItemsSource = prodArray;
+            }
+            else if (bikeCombo.SelectedIndex == 1)
+            {
+                int x = 0;
+                for(int i = 0; i < prodArray.Length; i++)
+                {
+                    if (prodArray[i].varType == type1)
+                    {
+                        filteredArray[x] = prodArray[i];
+                        x++;
+                    }
+                }
+                prodBox.ItemsSource = filteredArray;
+            }
+            else if (bikeCombo.SelectedIndex == 2)
+            {
+                int x = 0;
+                for (int i = 0; i < prodArray.Length; i++)
+                {
+                    if (prodArray[i].varType == type2)
+                    {
+                        filteredArray[x] = prodArray[i];
+                        x++;
+                    }
+                }
+                prodBox.ItemsSource = filteredArray;
+            }
+        }
+
+        private void calcShippingButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
@@ -106,6 +156,7 @@ namespace Question4
         public string Name { get; set; }
         public double Price { get; set; }
         public double Tax { get; set; }
+        public Variation varType { get; set; }
 
         public void AddTax(double taxRate)
         {
@@ -114,7 +165,12 @@ namespace Question4
 
         public override string ToString()
         {
-            return (String.Format("{0,-15}{1,-30}{2,-15}{3,-15}",ID,Name,Price,Tax));
+            return (String.Format("{0,-15}{1,-30}{2,-15}{3,-15}{4,-15}",ID,Name,Price,Tax,varType.VariationType));
         }
+    }
+
+    class Variation
+    {
+        public string VariationType { get; set; }
     }
 }

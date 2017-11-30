@@ -28,9 +28,9 @@ namespace Question4
         public MainWindow()
         {
             InitializeComponent();
-            Product productA = new Product { ID = 100, Name = "Hitachi Magic Wand", Price = 69.69 };
-            Product productB = new Product { ID = 101, Name = "Bad Dragon XXL Dildo", Price = 55.60 };
-            Product productC = new Product { ID = 102, Name = "Grown Ups 2 Blu-Ray", Price = 3.50 };
+            Product productA = new Product { ID = 100, Name = "Road Bike", Price = 69.69 };
+            Product productB = new Product { ID = 101, Name = "Mountain Bike", Price = 55.60 };
+            Product productC = new Product { ID = 102, Name = "Hybrid Bike", Price = 3.50 };
             prodArray[0] = productA;
             prodArray[1] = productB;
             prodArray[2] = productC;
